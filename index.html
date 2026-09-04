@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una pregunta para ti ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            overflow: hidden;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 500px;
+            padding: 40px 25px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            color: #ff3366;
+            font-size: 35px;
+        }
+
+        p {
+            color: #555;
+            font-size: 20px;
+        }
+
+        .pregunta {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin: 30px 0;
+        }
+
+        button {
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.2s;
+        }
+
+        #si {
+            background: #ff3366;
+            color: white;
+        }
+
+        #si:hover {
+            transform: scale(1.1);
+        }
+
+        #no {
+            background: #555;
+            color: white;
+            position: relative;
+        }
+
+        #mensaje {
+            display: none;
+            color: #ff3366;
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+
+        .corazon {
+            position: fixed;
+            top: -10px;
+            font-size: 25px;
+            animation: caer 4s linear forwards;
+            z-index: 5;
+        }
+
+        @keyframes caer {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>💕 Hola, mi amor 💕</h1>
+
+        <p>Tengo una pregunta muy importante para ti...</p>
+
+        <div class="pregunta">
+            ¿Quieres Formar parte de mi vida? 🥰❤️
+        </div>
+
+        <button id="si" onclick="aceptar()">
+            ❤️ SÍ, QUIERO
+        </button>
+
+        <button id="no">
+            😏 NO
+        </button>
+
+        <div id="mensaje">
+    ¡Sabía que dirías que sí! 😍❤️
+    <br><br>
+
+    Dayanna, quiero compartir contigo momentos
+    lindos, crear recuerdos que nunca olvidemos
+    y vivir una historia juntos. 💕
+    
+    <br><br>
+
+    Quiero estar a tu lado, reír contigo,
+    apoyarte y disfrutar cada momento que la vida
+    nos regale. 🥰
+
+    <br><br>
+
+    ❤️ Con cariño, David ❤️
+</div>
+
+    </div>
+
+    <script>
+
+        const botonNo = document.getElementById("no");
+
+        botonNo.addEventListener("mouseover", escapar);
+
+        botonNo.addEventListener("touchstart", escapar);
+
+        function escapar() {
+
+            const ancho = window.innerWidth - botonNo.offsetWidth - 20;
+            const alto = window.innerHeight - botonNo.offsetHeight - 20;
+
+            const x = Math.random() * ancho;
+            const y = Math.random() * alto;
+
+            botonNo.style.position = "fixed";
+            botonNo.style.left = x + "px";
+            botonNo.style.top = y + "px";
+        }
+
+        function aceptar() {
+
+            document.getElementById("mensaje").style.display = "block";
+
+            document.getElementById("si").style.display = "none";
+            document.getElementById("no").style.display = "none";
+
+            crearCorazones();
+        }
+
+        function crearCorazones() {
+
+            for (let i = 0; i < 40; i++) {
+
+                const corazon = document.createElement("div");
+
+                corazon.classList.add("corazon");
+
+                corazon.innerHTML = "❤️";
+
+                corazon.style.left = Math.random() * 100 + "vw";
+
+                corazon.style.animationDuration =
+                    (Math.random() * 3 + 2) + "s";
+
+                corazon.style.fontSize =
+                    (Math.random() * 20 + 15) + "px";
+
+                document.body.appendChild(corazon);
+
+                setTimeout(() => {
+                    corazon.remove();
+                }, 5000);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
